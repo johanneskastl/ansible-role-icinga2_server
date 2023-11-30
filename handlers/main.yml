@@ -1,0 +1,7 @@
+---
+# icinga2_server/handlers/main.yml
+
+- name: 'Restart the icinga2 service'
+  ansible.builtin.service:
+    name: "{{ icinga2_server_service_name }}"
+    state: 'restarted'
