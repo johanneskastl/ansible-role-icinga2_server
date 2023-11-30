@@ -27,3 +27,10 @@
   ansible.builtin.package:
     name: "{{ monitoring_plugins_package_name }}"
     update_cache: true
+
+- name: 'Enable the API'
+  ansible.builtin.command:
+    cmd: 'icinga2 api setup'
+    creates: '/etc/icinga2/conf.d/api-users.conf'
+  notify:
+    - 'Restart the icinga2 service'
