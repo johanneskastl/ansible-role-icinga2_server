@@ -13,6 +13,9 @@
       paths:
         - ../vars/
 
+#
+# Icinga2 server
+#
 - name: 'Install the icinga2 package'
   ansible.builtin.package:
     name: "{{ icinga2_server_package_name }}"
