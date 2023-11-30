@@ -46,6 +46,23 @@
     name: "{{ icinga2_web_package_name }}"
     update_cache: true
 
+- name: 'Enable the apache modules'
+  community.general.apache2_module:
+    name: rewrite
+    state: present
+  notify:
+    - 'Restart the icinga2 web service'
+
+- name: 'Enable the icinga3 web service'
+  ansible.builtin.service:
+    name: "{{ icinga2_web_service_name }}"
+    enabled: true
+
+- name: 'Start the icinga2 web service'
+  ansible.builtin.service:
+    name: "{{ icinga2_web_service_name }}"
+    state: 'started'
+
 #
 # monitoring plugins
 #
