@@ -1,0 +1,21 @@
+galaxy_info:
+  role_name: 'icinga2_server'
+  namespace: 'johanneskastl'
+  author: 'Johannes Kastl'
+  description: 'Install, configure and start a Icinga2 server including Icinga2 Web'
+
+  license: 'BSD-3-Clause'
+
+  min_ansible_version: '2.12'
+
+  platforms:
+    - name: opensuse
+      versions:
+        - '15.5'
+    - name: SLES
+      versions:
+        - '15SP5'
+
+  galaxy_tags: []
+
+dependencies: []

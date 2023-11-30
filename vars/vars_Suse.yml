@@ -1,0 +1,5 @@
+---
+
+icinga2_server_package_name: 'icinga2'
+icinga2_web_package_name: 'icingaweb2'
+monitoring_plugins_package_name: 'monitoring-plugins-all'
