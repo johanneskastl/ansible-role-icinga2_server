@@ -34,3 +34,13 @@
     creates: '/etc/icinga2/conf.d/api-users.conf'
   notify:
     - 'Restart the icinga2 service'
+
+- name: 'Enable the icinga2 service'
+  ansible.builtin.service:
+    name: "{{ icinga2_server_service_name }}"
+    enabled: true
+
+- name: 'Start the icinga2 service'
+  ansible.builtin.service:
+    name: "{{ icinga2_server_service_name }}"
+    state: 'started'
