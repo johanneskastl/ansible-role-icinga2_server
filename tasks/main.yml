@@ -1,0 +1,29 @@
+---
+# icinga2_server/tasks/main.yml
+
+- name: 'Load variables'
+  ansible.builtin.include_vars: "{{ lookup('ansible.builtin.first_found', parameters) }}"
+  vars:
+    parameters:
+      files:
+        - "vars_{{ ansible_distribution | regex_replace(' ', '_') }}_{{ ansible_distribution_version }}.yml"
+        - "vars_{{ ansible_distribution | regex_replace(' ', '_') }}_{{ ansible_distribution_major_version }}.yml"
+        - "vars_{{ ansible_distribution | regex_replace(' ', '_') }}.yml"
+        - "vars_{{ ansible_os_family | regex_replace(' ', '_') }}.yml"
+      paths:
+        - ../vars/
+
+- name: 'Install the icinga2 package'
+  ansible.builtin.package:
+    name: "{{ icinga2_server_package_name }}"
+    update_cache: true
+
+- name: 'Install the icinga2-web package'
+  ansible.builtin.package:
+    name: "{{ icinga2_web_package_name }}"
+    update_cache: true
+
+- name: 'Install the monitoring-plugins package'
+  ansible.builtin.package:
+    name: "{{ monitoring_plugins_package_name }}"
+    update_cache: true
