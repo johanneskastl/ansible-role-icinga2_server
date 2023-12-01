@@ -63,6 +63,16 @@
     name: "{{ icinga2_web_service_name }}"
     state: 'started'
 
+- name: 'Create the setup.token file'
+  ansible.builtin.command:
+    cmd: 'icingacli setup token create'
+    creates: '/etc/icingaweb2/setup.token'
+
+- name: 'Read the token file'
+  ansible.builtin.slurp:
+    src: '/etc/icingaweb2/setup.token'
+  register: icingaweb2_setup_token
+
 #
 # monitoring plugins
 #
@@ -70,3 +80,10 @@
   ansible.builtin.package:
     name: "{{ monitoring_plugins_package_name }}"
     update_cache: true
+
+#
+# output the setup token for Icinga2 Web
+#
+- name: 'The setup token for the Icinga2 Web interface'
+  ansible.builtin.debug:
+    msg: "The setup token for the Icinga2 Web interface is {{ icingaweb2_setup_token['content'] | b64decode }}"
