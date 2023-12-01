@@ -74,6 +74,14 @@
   register: icingaweb2_setup_token
 
 #
+# Icinga2 director
+#
+- name: 'Install the director package'
+  ansible.builtin.package:
+    name: "{{ icinga2_director_package_name }}"
+    update_cache: true
+
+#
 # monitoring plugins
 #
 - name: 'Install the monitoring-plugins package'
