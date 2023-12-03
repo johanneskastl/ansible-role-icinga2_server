@@ -68,6 +68,14 @@
     cmd: 'icingacli setup token create'
     creates: '/etc/icingaweb2/setup.token'
 
+- name: 'Fix the permissions on the setup.token file'
+  ansible.builtin.file:
+    path: '/etc/icingaweb2/setup.token'
+    state: 'file'
+    owner: 'root'
+    group: 'icingaweb2'
+    mode: '0600'
+
 - name: 'Read the token file'
   ansible.builtin.slurp:
     src: '/etc/icingaweb2/setup.token'
