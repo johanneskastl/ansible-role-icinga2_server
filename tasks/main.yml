@@ -16,7 +16,7 @@
 #
 # Icinga2 server
 #
-- name: 'Install the icinga2 package'
+- name: 'Install the icinga2 package(s)'
   ansible.builtin.package:
     name: "{{ icinga2_server_package_name }}"
     update_cache: true
@@ -41,7 +41,7 @@
 #
 # Icinga2 web
 #
-- name: 'Install the icinga2-web package'
+- name: 'Install the icinga2-web package(s)'
   ansible.builtin.package:
     name: "{{ icinga2_web_package_name }}"
     update_cache: true
@@ -84,7 +84,7 @@
 #
 # Icinga2 director
 #
-- name: 'Install the director package'
+- name: 'Install the director package(s)'
   ansible.builtin.package:
     name: "{{ icinga2_director_package_name }}"
     update_cache: true
@@ -92,7 +92,7 @@
 #
 # monitoring plugins
 #
-- name: 'Install the monitoring-plugins package'
+- name: 'Install the monitoring-plugins package(s)'
   ansible.builtin.package:
     name: "{{ monitoring_plugins_package_name }}"
     update_cache: true
